@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react"
+import { IconArrowUpRight } from "@/components/icons/arrow-up-right"
 
 const posts = [
   {
@@ -79,7 +79,7 @@ export function WritingSection() {
               </div>
 
               <div className="flex shrink-0 items-center self-start pt-1">
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground/40 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                <IconArrowUpRight className="h-4 w-4 text-muted-foreground/40 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
               </div>
             </a>
           ))}

@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react"
+import { IconArrowUpRight } from "@/components/icons/arrow-up-right"
 
 const projects = [
   {
@@ -46,7 +46,7 @@ export function ProjectsSection() {
                   <h3 className="font-mono text-sm font-medium text-foreground transition-colors group-hover:text-primary">
                     {project.name}
                   </h3>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/40 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                  <IconArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/40 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
                 </div>
                 <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                   {project.description}
