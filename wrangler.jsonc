@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "jakeparr-dev",
+  "compatibility_date": "2026-09-15",
+  // Static-only Worker: no "main" script. Next.js `output: "export"`
+  // writes the prerendered site to ./out, and Workers serves it directly.
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
