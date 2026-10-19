@@ -55,10 +55,11 @@ export const projects: Project[] = [
     tagline:
       "Learn mechatronics through simulation — a crash course and a sandbox of robot-control exercises.",
     description:
-      "A hands-on mechatronics course built on MuJoCo: write controllers against real robot models, run them in a physics simulator, and get graded on the result. Currently a native desktop app (MuJoCo's viewer needs a native window); a browser-playable version is in progress.",
-    tech: ["Python", "MuJoCo", "NiceGUI"],
+      "A hands-on mechatronics course built on MuJoCo: write controllers against real robot models, run them in a physics simulator, and get graded on the result. The full course runs as a native desktop app (MuJoCo's viewer needs a native window) — the embed above is a browser port of just the pendulum swing-up lesson: same physics and controller (energy-pump control, then a PD balance near upright), reimplemented in canvas so it runs without installing anything.",
+    tech: ["Python", "MuJoCo", "NiceGUI", "JavaScript (browser port)"],
     category: "mine",
     repoUrl: "https://github.com/jparr95/MechLearning",
+    embed: { path: "/apps/mechlearning/index.html" },
     year: 2026,
     status: "wip",
   },
