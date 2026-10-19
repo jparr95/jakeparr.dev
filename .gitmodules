@@ -1,0 +1,9 @@
+[submodule "projects/omniphys-particle-sandbox"]
+	path = projects/omniphys-particle-sandbox
+	url = https://github.com/JPs-works/OmniPhysParticleSandbox.git
+[submodule "projects/scale-of-everything"]
+	path = projects/scale-of-everything
+	url = https://github.com/JPs-works/ScaleOfEverything.git
+[submodule "projects/mechlearning"]
+	path = projects/mechlearning
+	url = https://github.com/JPs-works/MechLearning.git
