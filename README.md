@@ -45,8 +45,17 @@ npm run preview   # next build + wrangler dev (local)
 
 Cloudflare dashboard build settings:
 
-- **Build command:** `npm run build`
+- **Build command:** `git submodule update --init --recursive && npm install && npm run build`
 - **Deploy command:** `npx wrangler deploy`
+
+The embedded projects are git submodules (public repos, plain `https` URLs, so no
+credentials are needed). The build uses the commit this repo pins for each one — it
+never pulls newer commits. To ship a project update, run
+`git submodule update --remote`, then commit and push the new pointers. The submodule
+init in the build command is there because the root `npm install` needs
+`projects/*` present (they are npm workspaces); `scripts/build-projects.mjs` also
+inits any missing submodule and fails the build, rather than silently skipping the
+embed, if it can't.
 
 Do not let wrangler auto-configure this project. With no `wrangler.jsonc` present it
 detects "Next.js", runs `@opennextjs/cloudflare migrate`, and tries to bundle a

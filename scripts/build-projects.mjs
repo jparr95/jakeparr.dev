@@ -4,7 +4,7 @@
 // content/projects.ts for the project list and architecture.md for why
 // these are NOT bundled into the main app.
 import { execSync } from "node:child_process"
-import { existsSync, rmSync, cpSync, mkdirSync } from "node:fs"
+import { existsSync, rmSync, cpSync, mkdirSync, readdirSync } from "node:fs"
 import { fileURLToPath } from "node:url"
 import path from "node:path"
 
@@ -26,14 +26,31 @@ const apps = [
   { dir: "mechlearning", slug: "mechlearning", static: "web/pendulum-swingup" },
 ]
 
-for (const app of apps) {
-  const projectDir = path.join(root, "projects", app.dir)
-  if (!existsSync(projectDir)) {
-    console.warn(
-      `[build-projects] skipping ${app.dir} — not found. Run 'git submodule update --init --recursive' first?`
-    )
-    continue
+// Make sure a submodule is checked out. Cloudflare's build may or may not
+// clone submodules for us, so fetch any that are missing (they're public
+// repos on https, so no credentials are needed). Never updates one that's
+// already present — the site builds the commit this repo pins.
+function ensureSubmodule(dir) {
+  const rel = `projects/${dir}`
+  const projectDir = path.join(root, rel)
+  if (existsSync(projectDir) && readdirSync(projectDir).length > 0) return
+  console.log(`[build-projects] ${rel} is empty, running git submodule update --init...`)
+  try {
+    execSync(`git submodule update --init --recursive -- ${rel}`, { cwd: root, stdio: "inherit" })
+  } catch {
+    // fall through to the check below for a clear error
   }
+  if (!existsSync(projectDir) || readdirSync(projectDir).length === 0) {
+    throw new Error(
+      `[build-projects] ${rel} is missing and could not be fetched. ` +
+        `Run 'git submodule update --init --recursive' (needs a .git directory and network access).`
+    )
+  }
+}
+
+for (const app of apps) {
+  ensureSubmodule(app.dir)
+  const projectDir = path.join(root, "projects", app.dir)
 
   const outDir = path.join(root, "public", "apps", app.slug)
   rmSync(outDir, { recursive: true, force: true })
@@ -49,11 +66,10 @@ for (const app of apps) {
     continue
   }
 
-  console.log(`[build-projects] installing deps for ${app.dir}...`)
-  execSync("npm install", { cwd: projectDir, stdio: "inherit" })
-
+  // Deps come from the root install (npm workspaces — see package.json), so
+  // there's no per-project `npm install`.
   console.log(`[build-projects] building ${app.dir}...`)
-  execSync("npm run build", { cwd: projectDir, stdio: "inherit" })
+  execSync(`npm run build -w projects/${app.dir}`, { cwd: root, stdio: "inherit" })
 
   const distDir = path.join(projectDir, app.dist)
   if (!existsSync(distDir)) {

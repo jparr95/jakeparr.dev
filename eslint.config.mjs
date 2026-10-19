@@ -3,7 +3,7 @@ import globals from "globals"
 
 export default tseslint.config(
   {
-    ignores: [".next/**", "out/**", "build/**", "node_modules/**", "e2e/**"],
+    ignores: [".next/**", "out/**", "build/**", "node_modules/**", "e2e/**", "projects/**", "public/apps/**"],
   },
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
