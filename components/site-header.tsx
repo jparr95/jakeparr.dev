@@ -3,15 +3,18 @@
 import Link from "next/link"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
+import { NavDropdown } from "@/components/nav-dropdown"
+import { getProjectsByCategory } from "@/content/projects"
 
 const navLinks = [
   { label: "about", href: "#about" },
   { label: "writing", href: "#writing" },
-  { label: "projects", href: "#projects" },
 ]
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const mine = getProjectsByCategory("mine")
+  const loved = getProjectsByCategory("loved")
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
@@ -33,8 +36,14 @@ export function SiteHeader() {
             </li>
           ))}
           <li>
+            <NavDropdown label="my projects" items={mine} />
+          </li>
+          <li>
+            <NavDropdown label="projects i love" items={loved} />
+          </li>
+          <li>
             <Link
-              href="https://github.com/jakeparr"
+              href="https://github.com/jparr95"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -69,9 +78,52 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
-            <li>
+
+            {mine.length > 0 && (
+              <li className="pt-3">
+                <span className="block px-0 py-1 font-mono text-[10px] tracking-widest text-muted-foreground/60 uppercase">
+                  my projects
+                </span>
+                <ul>
+                  {mine.map((p) => (
+                    <li key={p.slug}>
+                      <Link
+                        href={`/projects/${p.slug}`}
+                        className="block py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {p.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )}
+
+            {loved.length > 0 && (
+              <li className="pt-3">
+                <span className="block px-0 py-1 font-mono text-[10px] tracking-widest text-muted-foreground/60 uppercase">
+                  projects i love
+                </span>
+                <ul>
+                  {loved.map((p) => (
+                    <li key={p.slug}>
+                      <Link
+                        href={`/projects/${p.slug}`}
+                        className="block py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {p.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )}
+
+            <li className="pt-3">
               <Link
-                href="https://github.com/jakeparr"
+                href="https://github.com/jparr95"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
