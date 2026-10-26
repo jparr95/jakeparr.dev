@@ -12,6 +12,8 @@ export type Project = {
   embed?: {
     path: string
   }
+  /** A hosted external site, for projects that are linked out rather than embedded. */
+  siteUrl?: string
   /** Required for "loved" projects; never set for "mine". */
   attribution?: {
     author: string
@@ -62,6 +64,19 @@ export const projects: Project[] = [
     embed: { path: "/apps/mechlearning/index.html" },
     year: 2026,
     status: "wip",
+  },
+  {
+    slug: "in-the-bag",
+    title: "In The Bag",
+    tagline: "A disc golf website, built while learning HTML, CSS and JavaScript.",
+    description:
+      "A disc golf website from my early days of learning web development. It is hosted separately on GitHub Pages, so it opens in its own tab rather than embedding here.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    category: "mine",
+    repoUrl: "https://github.com/jparr95/In-The-Bag",
+    siteUrl: "https://jparr95.github.io/In-The-Bag/",
+    year: 2022,
+    status: "archived",
   },
 ]
 

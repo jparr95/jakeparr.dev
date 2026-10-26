@@ -42,6 +42,18 @@ export default async function ProjectPage({
 
       {project.embed ? (
         <ProjectEmbed src={project.embed.path} title={project.title} />
+      ) : project.siteUrl ? (
+        <div className="border border-border/50 bg-card/30 p-10 text-center">
+          <a
+            href={project.siteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-1 text-primary transition-colors hover:text-foreground"
+          >
+            Visit the live site
+            <IconArrowUpRight className="h-4 w-4 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </div>
       ) : (
         <div className="border border-dashed border-border/50 bg-card/30 p-10 text-center text-sm text-muted-foreground">
           No live demo embedded yet — see the source below.

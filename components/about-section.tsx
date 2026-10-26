@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export function AboutSection() {
   return (
     <section id="about" className="border-t border-border py-20">
@@ -90,6 +92,12 @@ export function AboutSection() {
               This site is the short version. The projects above are the long
               version, and the links on this page are where to find me.
             </p>
+            <Link
+              href="/about"
+              className="font-mono text-sm text-primary transition-colors hover:text-foreground"
+            >
+              Read the longer story &rarr;
+            </Link>
           </div>
         </div>
       </div>
