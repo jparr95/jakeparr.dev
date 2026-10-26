@@ -1,6 +1,6 @@
 # jakeparr.dev
 
-Personal portfolio and dev blog built with Next.js.
+Personal portfolio built with Next.js: an intro, embedded project demos, and links.
 
 ## Tech stack
 
@@ -22,10 +22,12 @@ npm run test:e2e  # playwright e2e (starts a server if needed)
 
 ## Project structure
 
-- `app/` — App Router: layout, page, global styles
+- `app/` — App Router: layout, page, global styles, per-project pages, app icons
 - `components/` — page sections and icons
+- `content/projects.ts` — the project list (drives the nav, the home page and `/projects/[slug]`)
 - `lib/` — utilities (`cn` helper)
-- `public/` — static assets (favicons)
+- `projects/` — git submodules, one per embedded project
+- `scripts/build-projects.mjs` — builds each project into `public/apps/` (generated, gitignored)
 - `e2e/` — Playwright specs
 
 The site has no runtime dependencies beyond React and `lucide-react`.

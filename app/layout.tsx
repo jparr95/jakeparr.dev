@@ -13,25 +13,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Jake Parr — Developer',
-  description: 'Personal dev blog and portfolio of Jake Parr. Thoughts on software engineering, web development, and building for the future.',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+  title: 'Jake Parr — Software Developer',
+  description:
+    'Portfolio of Jake Parr: software developer, automation specialist and robotics hobbyist, crafting at the intersection of software and hardware.',
 }
 
 export const viewport: Viewport = {

@@ -12,23 +12,17 @@ export function AboutSection() {
           {/* Left column — quick facts */}
           <div className="flex flex-col gap-6">
             <div>
-              <p className="mb-1 font-mono text-[10px] tracking-widest text-muted-foreground/60 uppercase">
-                Location
-              </p>
-              <p className="text-sm text-foreground">Internet</p>
-            </div>
-            <div>
-              <p className="mb-1 font-mono text-[10px] tracking-widest text-muted-foreground/60 uppercase">
+              <p className="mb-1 font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
                 Focus
               </p>
-              <p className="text-sm text-foreground">Full-stack web development</p>
+              <p className="text-sm text-foreground">Software, automation, robotics</p>
             </div>
             <div>
-              <p className="mb-1 font-mono text-[10px] tracking-widest text-muted-foreground/60 uppercase">
+              <p className="mb-1 font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
                 Stack
               </p>
               <div className="flex flex-wrap gap-2">
-                {["TypeScript", "React", "Next.js", "Node.js", "Go", "PostgreSQL"].map(
+                {["TypeScript", "React", "Python", "Swift", "Kotlin", "Appium", "MuJoCo"].map(
                   (tech) => (
                     <span
                       key={tech}
@@ -41,22 +35,22 @@ export function AboutSection() {
               </div>
             </div>
 
-            <div className="flex gap-4 pt-2">
+            <div className="flex flex-wrap gap-4 pt-2">
               <a
-                href="https://github.com/jakeparr"
+                href="https://github.com/jparr95"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-xs text-muted-foreground transition-colors hover:text-primary"
               >
-                GitHub
+                GitHub (jparr95)
               </a>
               <a
-                href="https://x.com/jakeparr"
+                href="https://github.com/JPs-works"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-xs text-muted-foreground transition-colors hover:text-primary"
               >
-                X / Twitter
+                GitHub (JPs-works)
               </a>
               <a
                 href="https://linkedin.com/in/jakeparr"
@@ -66,26 +60,35 @@ export function AboutSection() {
               >
                 LinkedIn
               </a>
+              <a
+                href="https://x.com/jakeparr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs text-muted-foreground transition-colors hover:text-primary"
+              >
+                X / Twitter
+              </a>
             </div>
           </div>
 
           {/* Right column — bio */}
           <div className="flex flex-col gap-5">
             <p className="text-base leading-relaxed text-muted-foreground">
-              I am a software developer interested in the intersection of design
-              and engineering. My work spans web applications, developer tools,
-              and distributed systems.
+              I am a software developer and automation specialist who likes to
+              work where code meets the physical world. By day I build test
+              automation across web and mobile; the rest of the time I tinker
+              with robotics, simulation, and whatever hardware is on the bench.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
-              I believe in building software that is fast, accessible, and
-              thoughtfully crafted. Most of my time is spent writing TypeScript
-              and Go, exploring new patterns in web architecture, and
-              contributing to open source.
+              The fun is in the crossing: a controller typed into an editor
+              swinging a pendulum upright, a browser rendering the scale of the
+              universe, a script pressing the buttons on a phone so a person
+              does not have to. Software is imagination written down; hardware
+              is where it gets to move.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
-              When I am not coding, you will find me reading about systems
-              design, experimenting with new frameworks, or writing about what I
-              have learned along the way.
+              This site is the short version. The projects above are the long
+              version, and the links on this page are where to find me.
             </p>
           </div>
         </div>

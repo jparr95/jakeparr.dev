@@ -7,8 +7,8 @@ import { NavDropdown } from "@/components/nav-dropdown"
 import { getProjectsByCategory } from "@/content/projects"
 
 const navLinks = [
+  { label: "projects", href: "#projects" },
   { label: "about", href: "#about" },
-  { label: "writing", href: "#writing" },
 ]
 
 export function SiteHeader() {
