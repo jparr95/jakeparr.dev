@@ -9,6 +9,7 @@ import { getProjectsByCategory } from "@/content/projects"
 const navLinks = [
   { label: "projects", href: "#projects" },
   { label: "about", href: "#about" },
+  { label: "story", href: "/about" },
 ]
 
 export function SiteHeader() {
