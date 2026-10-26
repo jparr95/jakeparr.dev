@@ -115,8 +115,19 @@ export default function AboutPage() {
         <Photo src="/about/desk-setup.jpg" alt="Jake's desk setup" width={640} height={480} caption="The desk" />
         <Photo src="/about/soldering.jpg" alt="Soldering at the workbench" width={1600} height={1200} caption="The bench" />
         <Paragraph>
-          My current fun project is custom LED lighting for a full-wall shelf system we built, and
-          helping a friend turn a garage into a home gym got me increasingly into woodworking.
+          My current fun project is custom LED lighting for a full-wall shelf system we built.
+        </Paragraph>
+
+        <Heading>Woodworking</Heading>
+        <Paragraph>
+          A friend asked me to collaborate on turning their garage into a home gym: design a
+          concept, then work with them to put it into action. It was an enjoyable project and a
+          great creative outlet, and it got me increasingly into woodworking.
+        </Paragraph>
+        <Photo src="/about/pegboard.jpg" alt="Handmade pegboards on the gym wall" width={1600} height={1200} caption="The pegboards" />
+        <Paragraph>
+          The large pegboards pictured above were handmade. I can think of ways to make them
+          better now, but they are something I am very proud of.
         </Paragraph>
 
         <Heading>Outdoors</Heading>
