@@ -22,8 +22,9 @@ Personal site: a Next.js 16 static export (`output: "export"`) served from Cloud
 ## Architecture rules
 
 - Projects are embedded via iframe, **not** bundled into the Next app. Keep them isolated.
-- Root `package.json` uses npm workspaces for the Vite projects (`omniphys-particle-sandbox`, `scale-of-everything`). Run a single `npm install` at the root; never `npm install` inside a project. React is pinned to one version across all of them — keep it aligned when upgrading.
-- `mechlearning` has no toolchain: `web/pendulum-swingup/` is copied as-is.
+- Root `package.json` uses npm workspaces for the Vite projects (`omniphys-particle-sandbox`, `scale-of-everything`, `mechlearning/web/ide`). Run a single `npm install` at the root; never `npm install` inside a project. React is pinned to one version across all of them — keep it aligned when upgrading.
+- `mechlearning` is a Python course; only its browser IDE `web/ide/` is built (Vite workspace). Its course files (`course/`, `sandbox/`, `mechlab/`) are imported into the IDE at build time.
+- A project with `embed.layout: "takeover"` in `content/projects.ts` fills the viewport below `SiteHeader` (height in `--site-header-h`) instead of the normal project page.
 - To add a project: add the submodule, add an entry to `apps` in `scripts/build-projects.mjs`, add it to `content/projects.ts`, and (if it is a Vite app) add it to `workspaces`. Vite projects need `base: '/apps/<slug>/'`.
 - `tsconfig.json` and `eslint.config.mjs` exclude `projects/` and `public/apps/`. Keep it that way, otherwise submodule sources and bundles break `next build` and lint.
 

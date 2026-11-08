@@ -23,6 +23,8 @@
   --input: oklch(0.25 0.01 260);
   --ring: oklch(0.75 0.18 180);
   --radius: 0.5rem;
+  /* SiteHeader: h-14 nav + 1px bottom border. Takeover project pages sit below it. */
+  --site-header-h: calc(3.5rem + 1px);
 }
 
 @theme inline {

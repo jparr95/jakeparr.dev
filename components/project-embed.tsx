@@ -42,7 +42,8 @@ export function ProjectEmbed({ src, title }: { src: string; title: string }) {
         src={src}
         title={title}
         loading="lazy"
-        sandbox="allow-scripts allow-same-origin allow-pointer-lock"
+        sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-popups allow-popups-to-escape-sandbox"
+        allow="fullscreen"
         className={expanded ? "w-full flex-1" : "h-[70vh] w-full"}
       />
     </div>

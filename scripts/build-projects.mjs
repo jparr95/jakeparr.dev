@@ -15,15 +15,15 @@ const root = path.resolve(__dirname, "..")
 // submodule.
 //   - `dist`: that project has its own package.json/toolchain — build it
 //      with npm and copy this output folder (relative to the submodule root).
+//   - `workspace`: the npm workspace to build, when the web app lives in a
+//      subfolder of a larger repo (e.g. MechLearning's web/ide/, the browser
+//      IDE for a Python/MuJoCo course). Defaults to the submodule root.
 //   - `static`: no build step — just copy this folder (relative to the
-//      submodule root) as-is. Use this for a plain HTML/JS demo that lives
-//      inside a larger, non-web-app repo (e.g. MechLearning's
-//      web/pendulum-swingup/, a port of one lesson — the rest of that repo
-//      is a native Python/MuJoCo app, not something we build here).
+//      submodule root) as-is. Use this for a plain HTML/JS demo.
 const apps = [
   { dir: "omniphys-particle-sandbox", slug: "omniphys-particle-sandbox", dist: "dist" },
   { dir: "scale-of-everything", slug: "scale-of-everything", dist: "dist" },
-  { dir: "mechlearning", slug: "mechlearning", static: "web/pendulum-swingup" },
+  { dir: "mechlearning", slug: "mechlearning", workspace: "web/ide", dist: "web/ide/dist" },
 ]
 
 // Make sure a submodule is checked out. Cloudflare's build may or may not
@@ -69,7 +69,8 @@ for (const app of apps) {
   // Deps come from the root install (npm workspaces — see package.json), so
   // there's no per-project `npm install`.
   console.log(`[build-projects] building ${app.dir}...`)
-  execSync(`npm run build -w projects/${app.dir}`, { cwd: root, stdio: "inherit" })
+  const workspace = app.workspace ? `projects/${app.dir}/${app.workspace}` : `projects/${app.dir}`
+  execSync(`npm run build -w ${workspace}`, { cwd: root, stdio: "inherit" })
 
   const distDir = path.join(projectDir, app.dist)
   if (!existsSync(distDir)) {
