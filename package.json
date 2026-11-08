@@ -36,6 +36,7 @@
   },
   "workspaces": [
     "projects/omniphys-particle-sandbox",
-    "projects/scale-of-everything"
+    "projects/scale-of-everything",
+    "projects/mechlearning/web/ide"
   ]
 }

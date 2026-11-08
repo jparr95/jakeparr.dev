@@ -7,8 +7,8 @@ import { NavDropdown } from "@/components/nav-dropdown"
 import { getProjectsByCategory } from "@/content/projects"
 
 const navLinks = [
-  { label: "projects", href: "#projects" },
-  { label: "about", href: "#about" },
+  { label: "projects", href: "/#projects" },
+  { label: "about", href: "/#about" },
   { label: "story", href: "/about" },
 ]
 
@@ -19,7 +19,7 @@ export function SiteHeader() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
         <Link href="/" className="font-mono text-sm tracking-wider text-primary">
           jakeparr.dev
         </Link>
