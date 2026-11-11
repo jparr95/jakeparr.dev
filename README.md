@@ -20,6 +20,40 @@ npm run lint      # eslint
 npm run test:e2e  # playwright e2e (starts a server if needed)
 ```
 
+## Updating the submodules
+
+The projects in `projects/` are git submodules. This repo pins each one to a
+specific commit, so new commits in a project repo do not appear here until you
+bump the pointer.
+
+```bash
+# first time after cloning
+git submodule update --init --recursive
+
+# pull the latest commit from every submodule's remote branch
+git submodule update --remote
+
+# or update just one
+git submodule update --remote projects/scale-of-everything
+
+# review, then commit the new pointers
+git status                      # shows "modified: projects/<name> (new commits)"
+git add projects/
+git commit -m "Bump submodules"
+git push
+```
+
+Notes:
+
+- Push changes in the submodule's own repo **before** pushing the pointer here,
+  or Cloudflare cannot check out the pinned commit.
+- Do not edit files under `projects/` as part of this repo; make the change in
+  the project repo, push it, then bump the pointer.
+- After bumping, run `npm install` (if the project's dependencies changed) and
+  `npm run build` to confirm the embed still builds.
+- `git pull` on this repo does not move submodules. If the pointers changed,
+  run `git submodule update --init --recursive` afterwards to match them.
+
 ## Project structure
 
 - `app/` — App Router: layout, page, global styles, per-project pages, app icons
